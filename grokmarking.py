@@ -74,16 +74,8 @@ with open(pass_tested_cases_path, "r") as fp:
         marks = []
         col = 2
         while col < len(row):
-            try:
-                is_late = bool(row[col + 1] == "TRUE") # was late? column 
-            except ValueError:
-                is_late = False
-
-            try:
-                is_done = bool(row[col + 3] == "1") # output column
-            except ValueError:
-                is_done = False
-
+            is_late = row[col + 1] == "TRUE"  # was late? column
+            is_done = row[col + 3] == "1"     # output column
             if is_done == 0:
                 marks.append(0)
             elif is_late != 0:
